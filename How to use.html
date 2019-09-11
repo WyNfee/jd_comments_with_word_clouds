@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>How to use</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="how-to-use">How to use</h1>
+<h2 id="project-setup">Project Setup</h2>
+<blockquote>
+<ul>
+<li>Install Python3 by this link: <a href="https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe">https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe</a>.</li>
+<li>Set up Python directory, and Python/Script in System <strong>PATH</strong> directory (if you are on windows).</li>
+<li>Install pip by following instruction of this link: <a href="https://pip.pypa.io/en/stable/installing/">https://pip.pypa.io/en/stable/installing/</a>.</li>
+<li>Install packages listed in <strong>requirement.txt</strong>.</li>
+</ul>
+</blockquote>
+<h2 id="get-comments">Get Comments</h2>
+<blockquote>
+<ul>
+<li>Find the product ID, for example, given a link <a href="https://item.jd.com/54764005930.html">https://item.jd.com/54764005930.html</a>, and we can see <strong>54764005930</strong> is the product ID.</li>
+<li>Change the hyper parameter: <em>data_expect_to_retrieve</em> and <em>coold_down_time</em>.</li>
+<li>Run the script by typing following command <strong>in your script locaiton directory</strong></li>
+</ul>
+</blockquote>
+<pre><code class="language-cmd"><div>python jd_comments_retrive.py
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_expect_to_retrieve</td>
+<td>the comments we expected to retrieve from the product page</td>
+</tr>
+<tr>
+<td>cool_down_time</td>
+<td>the time we delay for each request (10 items per-batch)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>I haven't test and don't know what will happen the request amount exceed existed comments on the page, it should be OK, but you can always set a smaller retrieve data amount to keep it cool.</li>
+<li>Try to set up a longer cool down time, so that it won't overshoot the server, and the server may shutdown and ignore the request (I haven't experience myself in my code, but it is a common sense that server have a protection mode)</li>
+</ul>
+<p>A file should be able to geneated in the your python location directory: such like <strong>54764005930_comments.jd</strong> in the sample.</p>
+<h2 id="generate-the-word-cloud">Generate the Word Cloud</h2>
+<blockquote>
+<ul>
+<li>Assign data source, by assigning the variable _<strong>file_to_process</strong> in script <strong>word_cloud_generator.py</strong> as the <strong>.jd</strong> file created previously.</li>
+<li>Optional, you can assign the font you want to use in word cloud that created, must be the font file absolute path</li>
+<li>Set the words you are not interested in the word cloud in list variable <em><strong>ignore_words</strong></em>.</li>
+<li>Run the script by typing following command <strong>in your script locaiton directory</strong></li>
+</ul>
+</blockquote>
+<pre><code class="language-cmd"><div>python word_cloud_generator.py
+</div></code></pre>
+
+    </body>
+    </html>
